@@ -1,3 +1,4 @@
+[![CI Workflow](https://github.com/vova4211/dofd-05-dotnet-vova4211/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/vova4211/dofd-05-dotnet-vova4211/actions/workflows/dotnet-desktop.yml)
 # Description
 This project is the .Net backend part of an educational  project. It provides connection to DB, implements CRUD operations and sends responses to requests. 
 
