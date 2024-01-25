@@ -24,8 +24,8 @@ jobs:
         with:
           dotnet-version: 6.0
 
-      - name: Show .NET version
-        run: dotnet --version
+      - name: Show .NET SDKs
+        run: dotnet --list-sdks
 
       - name: Restore Dependencies
         run: dotnet restore
