@@ -33,6 +33,11 @@ jobs:
       - name: Show .NET SDKs
         run: dotnet --list-sdks
 
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: devops
+
       - name: Restore Dependencies
         run: dotnet restore
           
