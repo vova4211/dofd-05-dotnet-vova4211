@@ -1,0 +1,60 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+      - devops
+  pull_request:
+    types:
+      - opened
+      - synchronize
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0
+
+      - name: Show .NET version
+        run: dotnet --version
+
+      - name: Restore Dependencies
+        run: dotnet restore
+          
+      - name: Build Project
+        run: dotnet build --configuration Release
+
+      - name: Run Unit Tests
+        run: dotnet test --configuration Release
+        
+
+  manual-trigger:
+    runs-on: windows-latest
+    if: github.event_name == 'repository_dispatch'
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0
+
+      - name: Restore Dependencies
+        run: dotnet restore
+          
+      - name: Build Project
+        run: dotnet build --configuration Release
+
+      - name: Run Unit Tests
+        run: dotnet test --configuration Release
